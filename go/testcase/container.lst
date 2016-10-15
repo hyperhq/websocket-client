@@ -1,0 +1,6 @@
+
+container=
+container=TEST_CONTAINER1_ID_FULL
+container=TEST_CONTAINER1_ID_PREFIX
+container=TEST_CONTAINER1_NAME
+container=notexist

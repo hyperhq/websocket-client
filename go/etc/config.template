@@ -1,0 +1,8 @@
+G_API_ROUTER="us-west-1.hyper.sh:443"
+G_HYPERCLI="hyper --host tcp://${G_API_ROUTER}"
+
+G_TEST_CONTAINER1="wstest1"
+G_TEST_CONTAINER2="wstest2"
+
+G_TEST_IMAGE1="xjimmyshcn/busybox"
+G_TEST_IMAGE2="alpine"

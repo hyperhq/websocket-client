@@ -1,0 +1,8 @@
+
+image=
+image=TEST_IMAGE_ID_FULL
+image=TEST_IMAGE_ID_PREFIX
+image=alpine
+image=alpine:latest
+image=alpine:3.1
+image=alpine:notexist

@@ -94,7 +94,7 @@ use option `--filter`, support filter by `container,image,label,event`
 - **event**: `start|stop`
 
 ```
-$ go run wsclient.go --accessKey $HYPER_ACCESS_KEY  --secretKey $HYPER_SECRET_KEY  --filter=container=test4,image=busybox,event=stop,label=test1,label=test2=test2
+$ go run wsclient.go --accessKey $HYPER_ACCESS_KEY  --secretKey $HYPER_SECRET_KEY  --filter=container=wstest2,image=alpine,event=stop,label=type,label=sh_hyper_instancetype=s1 
 ```
 
 # Test filter with util.sh

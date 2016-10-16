@@ -112,7 +112,7 @@ Usage: ./util.sh <ACTION> [OPTION]
  - stop                      : stop test container
  - start                     : start test container
  - rm                        : remove test container
- - test <FILTER> [CASE_NO]   : run test case
+ - watch <FILTER> [CASE_NO]  : run watch with filter
 
 <FILTER>:
  - container : use container.lst
@@ -121,7 +121,7 @@ Usage: ./util.sh <ACTION> [OPTION]
  - event     : use event.lst
 
 [CASE_NO]:
- - <empty>     : show all test case NO.
+ - <empty>     : show watch filter list.
  - <not empty> : start websocket client to watch with filter
 
 Example:

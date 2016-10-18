@@ -6,6 +6,7 @@ import (
 	"errors"
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
@@ -82,15 +83,21 @@ func main() {
 	dialer := websocket.Dialer{
 		TLSClientConfig: config,
 	}
+
 	ws, resp, err := dialer.Dial(u.String(), req.Header)
-	if err != nil {
-		log.Fatal("Error:", err)
-	}
+
 	if resp.StatusCode == http.StatusSwitchingProtocols {
-		log.Printf("connected, watching event now:")
-	} else {
-		log.Printf("Unexpected HTTP Status Code: %v\n", resp.StatusCode)
-		return
+		log.Print("connected, watching event now:")
+	}
+
+	var data []byte
+	if resp.ContentLength > 0 {
+		defer resp.Body.Close()
+		data, _ = ioutil.ReadAll(resp.Body)
+	}
+
+	if err != nil {
+		log.Fatalf("Error Result:\n status    : %v\n return    : %v", resp.Status, string(data))
 	}
 
 	defer ws.Close()
@@ -115,7 +122,7 @@ func main() {
 				if err != nil {
 					panic(err)
 				}
-				log.Printf("%v\n\n", string(b[:]))
+				log.Printf("%v\n", string(b[:]))
 			} else {
 				log.Printf("%s", message)
 			}

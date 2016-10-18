@@ -94,12 +94,13 @@ use option `--filter`, support filter by `container,image,label,event`
 - **event**: `start|stop`
 
 ```
-$ go run wsclient.go --accessKey $HYPER_ACCESS_KEY  --secretKey $HYPER_SECRET_KEY  --filter=container=wstest2,image=alpine,event=stop,label=type,label=sh_hyper_instancetype=s1 
+$ go run wsclient.go --accessKey $HYPER_ACCESS_KEY  --secretKey $HYPER_SECRET_KEY  --filter=container=wstest2,image=alpine,event=stop,label=type,label=sh_hyper_instancetype=s1
 ```
 
 # Test filter with util.sh
 
 ./util.sh makes start websocket client with filter easier.
+It will read Hyper.sh credential from ``~/.hyper/config.json`
 
 ## view help of util.sh
 ```

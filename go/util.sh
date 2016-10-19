@@ -152,7 +152,7 @@ function do_watch() {
     return
   fi
 
-  echo -e "\nstart run test case:"
+  echo -e "\nstart websocket client:"
   FILTER_COND=`sed -n "${NO}p" ${TEST_FILE}`
   if [ "$FILTER_COND" != "" ];then
     FILTER_COND="--filter=${FILTER_COND}"
@@ -172,7 +172,7 @@ function do_watch() {
   fi
 
   if [ "${FILTER}" == "image" ];then
-    TEST_IMAGE2_ID_FULL=`${G_HYPERCLI} images --no-trunc | grep "^${TEST_IMAGE2}.*latest" | awk '{print $3}'`
+    TEST_IMAGE2_ID_FULL=`${G_HYPERCLI} images --no-trunc | grep "^${G_TEST_IMAGE2}.*latest" | awk '{print $3}'`
     TEST_IMAGE2_ID_FULL=${TEST_IMAGE2_ID_FULL:7}
     TEST_IMAGE2_ID_PREFIX=${TEST_IMAGE2_ID_FULL:0:12}
     echo "TEST_IMAGE2_ID_FULL: ${TEST_IMAGE2_ID_FULL}"

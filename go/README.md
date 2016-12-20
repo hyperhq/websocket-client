@@ -183,3 +183,11 @@ $ curl -g 'http://127.0.0.1:2375/events?filters={"container":{"test":true},"imag
 {"status":"start","id":"6c0902c750c73d4bee6cecc82b1a6e3f36f625f65cfd5417fdb09e5b9a2f7d16","from":"busybox","Type":"container","Action":"start","Actor":{"ID":"6c0902c750c73d4bee6cecc82b1a6e3f36f625f65cfd5417fdb09e5b9a2f7d16","Attributes":{"image":"busybox","name":"test","sh_hyper_instancetype":"s4","test1":"","test2":"test2","test3":"test3=test3"}},"time":1476419660,"timeNano":1476419660534483726}
 {"status":"stop","id":"6c0902c750c73d4bee6cecc82b1a6e3f36f625f65cfd5417fdb09e5b9a2f7d16","from":"busybox","Type":"container","Action":"stop","Actor":{"ID":"6c0902c750c73d4bee6cecc82b1a6e3f36f625f65cfd5417fdb09e5b9a2f7d16","Attributes":{"image":"busybox","name":"test","sh_hyper_instancetype":"s4","test1":"","test2":"test2","test3":"test3=test3"}},"time":1476419662,"timeNano":1476419662997733372}
 ```
+
+## save dependency with godep
+
+```
+$ go get github.com/tools/godep
+$ cd $GOPATH/src/github.com/hyperhq/websocket-client/go
+$ godep save
+```

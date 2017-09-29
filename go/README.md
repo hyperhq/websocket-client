@@ -30,6 +30,8 @@ Usage of /tmp/go-build045314814/command-line-arguments/_obj/exe/wsclient:
     	Filter event by container,image,label,event, example 'container=test,image=busybox,label=key=value,event=start' (default string method)
   -pretty
     	Output result json as prettyprint JSON
+  -region string
+    	Hyper.sh region name, could be us-west-1|eu-central-1|RegionOne (default "us-west-1")
   -secretKey string
     	Hyper.sh Secret Key
 ```
@@ -46,7 +48,8 @@ $ export HYPER_SECRET_KEY=xxxxxx
 `accessKey` and `secretKey` are required options
 
 ```
-$ go run wsclient.go --accessKey $HYPER_ACCESS_KEY  --secretKey $HYPER_SECRET_KEY
+$ go run wsclient.go --accessKey $HYPER_ACCESS_KEY  --secretKey $HYPER_SECRET_KEY \
+  --addr=us-west-1.hyper.sh:443 --region us-west-1
 connecting to wss://us-west-1.hyper.sh:443/events/ws
 connected, watching event now:
 {"status":"start","id":"f29698cac3f6f66e84790fb12b3e5e4f3455b89b3ff12150ac4d86b8b90d9179","from":"xjimmyshcn/busybox","Type":"container","Action":"start","Actor":{"ID":"f29698cac3f6f66e84790fb12b3e5e4f3455b89b3ff12150ac4d86b8b90d9179","Attributes":{"":"","exitCode":"0","image":"xjimmyshcn/busybox","name":"test4","sh_hyper_instancetype":"s4","test1":"","test2":"test2","test3":"test3=test3"}},"time":1476375774,"timeNano":1476375774255155116}
@@ -58,7 +61,9 @@ connected, watching event now:
 use option `--pretty`
 
 ```
-$ go run wsclient.go --accessKey $HYPER_ACCESS_KEY  --secretKey $HYPER_SECRET_KEY --pretty
+$ go run wsclient.go --accessKey $HYPER_ACCESS_KEY  --secretKey $HYPER_SECRET_KEY \
+  --addr=us-west-1.hyper.sh:443 --region us-west-1 \
+  --pretty
 connecting to wss://us-west-1.hyper.sh:443/events/ws
 connected, watching event now:
 {
@@ -94,7 +99,8 @@ use option `--filter`, support filter by `container,image,label,event`
 - **event**: `start|stop`
 
 ```
-$ go run wsclient.go --accessKey $HYPER_ACCESS_KEY  --secretKey $HYPER_SECRET_KEY  --filter=container=wstest2,image=alpine,event=stop,label=type,label=sh_hyper_instancetype=s1
+$ go run wsclient.go --accessKey $HYPER_ACCESS_KEY  --secretKey $HYPER_SECRET_KEY \
+  --addr=us-west-1.hyper.sh:443 --region us-west-1 \ --filter=container=wstest2,image=alpine,event=stop,label=type,label=sh_hyper_instancetype=s1
 ```
 
 # Test filter with util.sh

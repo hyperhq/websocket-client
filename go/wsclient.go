@@ -37,6 +37,7 @@ func main() {
 	var addr = flag.String("addr", "us-west-1.hyper.sh:443", "ApiRouter entrypoint")
 	var accessKey = flag.String("accessKey", "", "Hyper.sh Access Key")
 	var secretKey = flag.String("secretKey", "", "Hyper.sh Secret Key")
+	var region = flag.String("region", "us-west-1", "Hyper.sh region name, could be us-west-1|eu-central-1|RegionOne")
 	var pretty = flag.Bool("pretty", false, "Output result json as prettyprint JSON")
 	flag.Var(&filters, "filter", "Filter event by container,image,label,event, example 'container=test,image=busybox,label=key=value,event=start'")
 
@@ -74,7 +75,7 @@ func main() {
 	log.Printf("connecting to %s://%s%s", req.URL.Scheme, req.Host, req.URL.RequestURI())
 	//log.Printf("query: %v", req.URL.Query())
 	req.URL = &u
-	req = SignUtil.Sign4(*accessKey, *secretKey, req)
+	req = SignUtil.Sign4(*accessKey, *secretKey, req, *region)
 
 	//connect to websocket server
 	config := &tls.Config{

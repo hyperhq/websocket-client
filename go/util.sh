@@ -157,7 +157,7 @@ function do_watch() {
   if [ "$FILTER_COND" != "" ];then
     FILTER_COND="--filter=${FILTER_COND}"
   fi
-  TEST_CMD="go run wsclient.go --addr=${G_API_ROUTER} --accessKey $HYPER_ACCESS_KEY  --secretKey $HYPER_SECRET_KEY ${FILTER_COND}"
+  TEST_CMD="go run wsclient.go --addr=${G_API_ROUTER} --region=${G_REGION} --accessKey $HYPER_ACCESS_KEY  --secretKey $HYPER_SECRET_KEY ${FILTER_COND}"
 
   if [ "${FILTER}" == "container" ];then
     TEST_CONTAINER1_ID_FULL=`${G_HYPERCLI} ps -aq --no-trunc --filter=name=${G_TEST_CONTAINER1}`
